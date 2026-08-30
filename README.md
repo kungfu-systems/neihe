@@ -54,6 +54,13 @@ published SkillHub release.
 
 ## Version authority
 
-Buildchain manages SemVer in both `package.json` and `SKILL.md`. The active
-development line is `dev/v0/v0.1`; future Alpha and stable promotion targets
-are `alpha/v0/v0.1` and `release/v0/v0.1`.
+`main` is the repository's single content and release mainline, following the
+same lightweight model as the Kungfu site repositories. Normal changes arrive
+through reviewed feature pull requests; Buildchain builds and validates every
+pull request and every push to `main`.
+
+Buildchain keeps SemVer synchronized between `package.json` and `SKILL.md`.
+SkillHub versions are immutable publication identities, so each published
+version must use a new SemVer and an exact Git tag such as
+`v0.1.0-alpha.0`. This repository does not use separate
+`dev/alpha/release` branches.

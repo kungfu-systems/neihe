@@ -18,7 +18,7 @@ key = "version"
 type = "regex"
 path = "SKILL.md"
 pattern = '^version:[ \t]*(?<version>[0-9A-Za-z.+-]+)[ \t]*$'
-replacement = 'version: ${version}'
+replacement = '${version}'
 
 [lifecycle.install]
 command = "corepack pnpm install --frozen-lockfile"
