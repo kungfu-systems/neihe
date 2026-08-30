@@ -11,9 +11,9 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node scripts/check.mjs && pnpm exec buildchain validate --require-version-state --require-lifecycle-stages install,build,verify && pnpm run build && node scripts/check.mjs --dist",
-    "doctor": "pnpm exec buildchain doctor --json",
-    "skillhub:dry-run": "pnpm run build && node scripts/skillhub-dry-run.mjs"
+    "check": "node scripts/check.mjs && corepack pnpm exec buildchain validate --require-version-state --require-lifecycle-stages install,build,verify && corepack pnpm run build && node scripts/check.mjs --dist",
+    "doctor": "corepack pnpm exec buildchain doctor --json",
+    "skillhub:dry-run": "corepack pnpm run build && node scripts/skillhub-dry-run.mjs"
   },
   "devDependencies": {
     "@kungfu-tech/buildchain": "4.0.1"
