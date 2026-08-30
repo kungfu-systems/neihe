@@ -1,0 +1,33 @@
+schema = 1
+
+[project]
+type = "package"
+name = "neihe"
+
+[version]
+required = true
+strategy = "semver"
+next = "auto"
+
+[[version.files]]
+type = "json"
+path = "package.json"
+key = "version"
+
+[[version.files]]
+type = "regex"
+path = "SKILL.md"
+pattern = '^version:[ \t]*(?<version>[0-9A-Za-z.+-]+)[ \t]*$'
+replacement = 'version: ${version}'
+
+[lifecycle.install]
+command = "corepack pnpm install --frozen-lockfile"
+
+[lifecycle.build]
+command = "corepack pnpm run build"
+
+[lifecycle.verify]
+command = "corepack pnpm run check"
+
+[lifecycle.check]
+command = "corepack pnpm run check"

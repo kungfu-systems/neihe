@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      buildchain-ref:
+        description: Temporary Buildchain runtime ref for trusted manual validation
+        required: false
+        default: ""
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches:
+      - "dev/**"
+      - "alpha/**"
+      - "release/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    uses: kungfu-systems/buildchain/.github/workflows/build.yml@v4
+    with:
+      buildchain-channel: auto
+      buildchain-ref: ${{ inputs.buildchain-ref || '' }}
+      buildchain-alpha-contract-lock-path: .buildchain/alpha-contract-lock.json
+      buildchain-stable-contract-lock-path: .buildchain/contract-lock.json
+      node-version: "24"
+      install-command: corepack pnpm install --frozen-lockfile
+      build-command: corepack pnpm run build
+      verify-command: corepack pnpm run check
+      require-install: true
+      require-build: true
+      require-verify: true
+      artifact-name: neihe
+      artifact-name-template: "{artifact}-{platform}-{shortSha}"
+      artifact-paths: |
+        dist/neihe
