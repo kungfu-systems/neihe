@@ -16,6 +16,7 @@
     "skillhub:dry-run": "corepack pnpm run build && node scripts/skillhub-dry-run.mjs"
   },
   "devDependencies": {
-    "@kungfu-tech/buildchain": "4.0.1"
+    "@kungfu-tech/buildchain": "4.0.1",
+    "fflate": "0.8.2"
   }
 }

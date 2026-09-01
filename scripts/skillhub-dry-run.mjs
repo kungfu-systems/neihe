@@ -1,9 +1,11 @@
 import path from "node:path";
+import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const skill = path.join(root, "dist", "neihe");
+const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+const skill = path.join(root, "dist", `neihe-skillhub-${packageJson.version}.zip`);
 const result = spawnSync(
   "skillhub",
   ["publish", skill, "--host", "https://api.skillhub.cn", "--dry-run", "--json"],

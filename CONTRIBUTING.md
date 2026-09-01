@@ -12,6 +12,7 @@ corepack pnpm run check
 corepack pnpm run skillhub:dry-run
 ```
 
-Keep `SKILL.md` and `package.json` versions identical. Do not edit generated
-files under `dist/`; rebuild them. Do not publish to SkillHub from an ordinary
-pull request or local verification run.
+Keep `SKILL.md` and `package.json` versions identical. Link every distributable
+module directly from `SKILL.md` so direct-URL Agent installers can fetch it.
+Do not edit generated files under `dist/`; rebuild them. Do not publish to
+SkillHub from an ordinary pull request or local verification run.
