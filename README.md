@@ -9,10 +9,11 @@ documentation are English.
 
 ## Current release
 
-The repository starts at `0.1.0-alpha.0`. This is an initialization release:
-the metadata, Buildchain lifecycle, SkillHub dry-run, and first `AGENTS.md`
-template are present, but the broader course resource library is not yet
-claimed complete.
+The repository starts at `0.1.0-alpha.0`. This first functional release provides
+one learner-facing `/neihe` entry point, an on-demand module index, the first
+three course modules, the Buildchain lifecycle, a SkillHub dry-run, and a
+versioned SkillHub ZIP. The broader course resource library is not yet claimed
+complete.
 
 ## Local verification
 
@@ -30,7 +31,14 @@ Build the exact SkillHub directory:
 corepack pnpm run build
 ```
 
-The result is `dist/neihe/`. Repository-only files are intentionally excluded.
+The results are:
+
+- `dist/neihe/` — the exact unpacked SkillHub package;
+- `dist/neihe-skillhub-<version>.zip` — the upload-ready archive whose root
+  contains exactly one `SKILL.md`.
+
+Repository-only files are intentionally excluded. The build also enforces the
+current SkillHub package ceiling of 200 files and 10 MiB uncompressed content.
 
 With SkillHub CLI 2026.8.5 or newer installed, run the official local preflight:
 
@@ -38,7 +46,7 @@ With SkillHub CLI 2026.8.5 or newer installed, run the official local preflight:
 corepack pnpm run skillhub:dry-run
 ```
 
-This command validates and packages the skill but does not publish it.
+This command validates the generated ZIP but does not publish it.
 
 ## Publication boundary
 
@@ -46,7 +54,7 @@ SkillHub publication is a separate side effect. After review and authorization:
 
 ```sh
 skillhub login --key "$SKILLHUB_KEY" --host "https://api.skillhub.cn"
-skillhub publish dist/neihe --host "https://api.skillhub.cn"
+skillhub publish dist/neihe-skillhub-0.1.0-alpha.0.zip --host "https://api.skillhub.cn"
 ```
 
 Never commit or print the API key. A successful local build or dry-run is not a
