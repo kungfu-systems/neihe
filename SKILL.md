@@ -4,7 +4,7 @@ slug: neihe
 version: 0.1.0-alpha.0
 displayName: 内核进化
 summary: 《内核进化》课程的 Agent 学习与实践入口。
-description: 当学员需要使用 HermesAgent、建立项目级 Agent 规则、获取课程模板或把课程方法落到真实项目时，使用这个 Skill。
+description: 当学员需要使用 HermesAgent、建立或定位共享大脑、沉淀长期规则或经验、建立项目级 Agent 规则、获取课程模板或把课程方法落到真实项目时，使用这个 Skill。
 tags:
   - agent
   - hermes
