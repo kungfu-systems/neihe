@@ -64,6 +64,7 @@ assert.equal(metadata.license, "Apache-2.0", "license must match the repository 
 assert.equal(metadata.homepage, "https://github.com/kungfu-systems/neihe");
 assert.ok(markdown.includes("assets/AGENTS.md"), "SKILL.md must route to the bundled AGENTS.md template");
 assert.ok(markdown.includes("references/module-index.md"), "SKILL.md must route through the module index");
+assert.ok(markdown.includes("scripts/shared_brain.py"), "SKILL.md must route to the shared-brain runtime");
 assert.ok(fs.existsSync(path.join(sourceRoot, "assets", "AGENTS.md")), "bundled AGENTS.md template is missing");
 assert.ok(fs.existsSync(path.join(sourceRoot, "references", "module-index.md")), "module index is missing");
 
@@ -82,8 +83,34 @@ for (const relative of modules) {
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
 assert.equal(metadata.version, packageJson.version, "SKILL.md and package.json versions must match");
 
+const sharedBrainFiles = [
+  "assets/shared-brain/AGENTS.md",
+  "assets/shared-brain/ABOUT_ME.md",
+  "assets/shared-brain/PROJECTS.md",
+  "assets/shared-brain/EXPERIENCE_CANDIDATES.md",
+  "assets/shared-brain/rules/ADOPTED_RULES.md",
+  "scripts/shared_brain.py",
+];
+for (const relative of sharedBrainFiles) {
+  assert.ok(fs.existsSync(path.join(sourceRoot, relative)), `${relative} is missing`);
+}
+const sharedBrainModule = fs.readFileSync(
+  path.join(sourceRoot, "references", "modules", "shared-brain.md"),
+  "utf8",
+);
+assert.ok(
+  sharedBrainModule.includes("scripts/shared_brain.py"),
+  "shared-brain module must explain how to invoke the runtime",
+);
+
 if (checkDist) {
-  const distributionFiles = ["SKILL.md", "assets/AGENTS.md", "references/module-index.md", ...modules];
+  const distributionFiles = [
+    "SKILL.md",
+    "assets/AGENTS.md",
+    "references/module-index.md",
+    ...modules,
+    ...sharedBrainFiles,
+  ];
   for (const relative of distributionFiles) {
     assert.equal(
       digest(path.join(root, relative)),
