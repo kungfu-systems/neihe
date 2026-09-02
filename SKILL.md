@@ -32,7 +32,7 @@ homepage: https://github.com/kungfu-systems/neihe
 需要课程方法或模板时，先读取 [模块索引](references/module-index.md)，再只加载当前任务需要的模块。不要一次读取全部模块。
 
 - 制作“7 天生命重塑·微行动打卡”网页，读取 [七天微行动](references/modules/seven-day-reset.md)。
-- 建立个人共享大脑、记录经验候选或采纳规则，读取 [共享大脑与经验蒸馏](references/modules/shared-brain.md)。
+- 建立或定位个人共享大脑、记录经验候选或采纳规则，读取 [共享大脑与经验蒸馏](references/modules/shared-brain.md)，并按其中协议调用 [共享大脑运行脚本](scripts/shared_brain.py)。
 - 为真实项目建立或改进 Agent 协作规则，读取 [项目 Agent 规则](references/modules/project-agent-rules.md)。
 
 如果当前需求不属于已提供模块，直接用本入口的共同原则帮助学员完成最小可用结果，并明确说明当前版本没有对应专项模块。不要虚构课程资料。

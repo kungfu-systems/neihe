@@ -11,13 +11,15 @@ documentation are English.
 
 The repository starts at `0.1.0-alpha.0`. This first functional release provides
 one learner-facing `/neihe` entry point, an on-demand module index, the first
-three course modules, the Buildchain lifecycle, a SkillHub dry-run, and a
-versioned SkillHub ZIP. The broader course resource library is not yet claimed
-complete.
+three course modules, a deterministic Python runtime for shared-brain location
+and safe candidate capture, the Buildchain lifecycle, a SkillHub dry-run, and
+a versioned SkillHub ZIP. The broader course resource library is not yet
+claimed complete.
 
 ## Local verification
 
-Requirements: Node.js 22.14 or later, Corepack, and pnpm 11.20.0.
+Requirements: Node.js 22.14 or later, Corepack, pnpm 11.20.0, and Python 3.10
+or later.
 
 ```sh
 corepack pnpm install --frozen-lockfile

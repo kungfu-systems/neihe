@@ -5,7 +5,7 @@
 | 模块 | 适用情境 | 主要交付 | 文件 |
 | --- | --- | --- | --- |
 | 七天微行动 | 想把模糊的自我改变愿望变成一个温和、可记录的小工具 | 单文件网页、任务定义和验收清单 | [seven-day-reset.md](modules/seven-day-reset.md) |
-| 共享大脑与经验蒸馏 | 经常重复交代背景，或想让一次经验被后续 Agent 继承 | 最小共享大脑、经验候选和人工采纳边界 | [shared-brain.md](modules/shared-brain.md) |
+| 共享大脑与经验蒸馏 | 经常重复交代背景，或想让一次经验被后续 Agent 继承 | 可跨会话定位的最小共享大脑、经验候选和人工采纳边界 | [shared-brain.md](modules/shared-brain.md) |
 | 项目 Agent 规则 | 想为一个真实项目建立 `AGENTS.md` 或协作边界 | 项目规则草案、假设和待确认项 | [project-agent-rules.md](modules/project-agent-rules.md) |
 
 ## 选择规则

@@ -37,6 +37,11 @@ fs.mkdirSync(output, { recursive: true });
 fs.copyFileSync(path.join(root, "SKILL.md"), path.join(output, "SKILL.md"));
 fs.cpSync(path.join(root, "assets"), path.join(output, "assets"), { recursive: true });
 fs.cpSync(path.join(root, "references"), path.join(output, "references"), { recursive: true });
+fs.mkdirSync(path.join(output, "scripts"), { recursive: true });
+fs.copyFileSync(
+  path.join(root, "scripts", "shared_brain.py"),
+  path.join(output, "scripts", "shared_brain.py"),
+);
 
 fs.rmSync(archive, { force: true });
 fs.writeFileSync(archive, zipSync(collectFiles(output), { level: 9 }));
