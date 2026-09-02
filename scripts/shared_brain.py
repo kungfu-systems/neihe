@@ -488,6 +488,10 @@ def main(argv: list[str] | None = None) -> int:
             **error.details,
         }
         code = 2
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except (AttributeError, OSError):
+        pass
     print(
         json.dumps(
             result,

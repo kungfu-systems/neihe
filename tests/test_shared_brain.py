@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -39,7 +40,14 @@ class SharedBrainRuntimeTest(unittest.TestCase):
             str(self.config),
             *arguments,
         ]
-        result = subprocess.run(command, text=True, capture_output=True, check=False)
+        result = subprocess.run(
+            command,
+            text=True,
+            encoding="utf-8",
+            capture_output=True,
+            check=False,
+            env={**os.environ, "PYTHONIOENCODING": "cp1252"},
+        )
         self.assertEqual(result.returncode, expected, result.stderr or result.stdout)
         return json.loads(result.stdout)
 
@@ -109,7 +117,10 @@ class SharedBrainRuntimeTest(unittest.TestCase):
         outside.write_text("must remain untouched\n", encoding="utf-8")
         candidates = self.brain / "EXPERIENCE_CANDIDATES.md"
         candidates.unlink()
-        candidates.symlink_to(outside)
+        try:
+            candidates.symlink_to(outside)
+        except OSError as error:
+            self.skipTest(f"symbolic links are unavailable: {error}")
 
         doctor = self.run_cli("doctor", expected=1)
         self.assertIn("EXPERIENCE_CANDIDATES.md", doctor["inspection"]["invalid_entries"])
