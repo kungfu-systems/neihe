@@ -14,7 +14,7 @@
     "check": "node scripts/check.mjs && corepack pnpm run test:python && corepack pnpm exec buildchain validate --require-version-state --require-lifecycle-stages install,build,verify && corepack pnpm run build && node scripts/check.mjs --dist",
     "doctor": "corepack pnpm exec buildchain doctor --json",
     "skillhub:dry-run": "corepack pnpm run build && node scripts/skillhub-dry-run.mjs",
-    "test:python": "python3 -m unittest discover -s tests -p 'test_*.py'"
+    "test:python": "python3 -m unittest discover -s tests -p test_*.py"
   },
   "devDependencies": {
     "@kungfu-tech/buildchain": "4.0.1",
